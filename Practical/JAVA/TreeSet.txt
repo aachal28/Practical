@@ -1,0 +1,32 @@
+import java.util.TreeSet;
+class Employee implements Comparable<Employee> {
+private int age;
+private String name;
+public Employee(int age, String name) {
+this.age = age;
+this.name = name;
+}
+public int getAge() {
+return age;
+}
+public String getName() {
+return name;
+}
+public int compareTo(Employee o) {
+return this.age - o.age;
+}
+public String toString() {
+return "Employee [age=" + age + ", name=" + name + "]";
+}
+}
+public class treeDemo {
+public static void main(String[] args) {
+TreeSet<Employee> employees = new TreeSet<>();
+employees.add(new Employee(22, "Enumerator"));
+employees.add(new Employee(25, "Iterator"));
+employees.add(new Employee(18, "ListIterator"))
+for (Employee employee : employees) {
+System.out.println(employee);
+}
+}
+}

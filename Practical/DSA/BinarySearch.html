@@ -1,0 +1,35 @@
+<html>
+  <body>
+    <script>
+      class Program {
+        SearchElement(Arr, size, data) {
+          var flag = 0;
+          for (let i = 0; i < size; i++) {
+            if (Arr[i] == data) {
+              flag = 1;
+              break;
+            }
+          }
+          if (flag == 1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+      }
+      var iNo = parseInt(prompt('Enter the number of element in the array\n'));
+      let obj = new Program(iNo);
+      var Arr = new Array();
+      for (let i = 0; i < iNo; i++) {
+        Arr[i] = parseInt(prompt('Enter the element at' + i + ' position'));
+      }
+      var data = parseInt(prompt('Enter the value to search\n'));
+      var ret = obj.SearchElement(Arr, iNo, data);
+      if (ret == 1) {
+        document.write('Data is present in the array<br>');
+      } else {
+        document.write('Data is not present in the array<br>');
+      }
+    </script>
+  </body>
+</html>

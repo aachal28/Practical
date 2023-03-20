@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Element Array</title>
+</head>
+<body>
+    <script>
+        const commonElement = (array1, array2) => {
+ let commonElement = [];
+ for (let i = 0; i < array1.length; i++) {
+ for (let j = 0; j < array2.length; j++) {
+ if (array1[i] === array2[j]) {
+ if (commonElement.indexOf(array1[i]) == -1) {
+ //can use Set also after pushing element into commonElement
+ // this condition is for duplicate value
+ commonElement.push(array1[i]);
+ }
+ }
+ }
+ }
+ console.log(`Common elements in both arrays are ${commonElement}`);
+};
+let array1 = [3, 4, 5, 8, 7, 7];
+let array2 = [3, 7, 8, 9, 9];
+commonElement(array1, array2);
+    </script>
+</body>
+</html>

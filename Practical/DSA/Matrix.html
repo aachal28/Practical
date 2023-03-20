@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix</title>
+</head>
+<body>
+    <script>
+        var Cols = parseInt(prompt('Enter number of columns : '));
+ var Rows = parseInt(prompt('Enter number of rows : '));
+ var Arr = new Array();
+ for (let i = 0; i < Rows; i++) {
+ Arr[i] = new Array();
+ for (let j = 0; j < Cols; j++) {
+ Arr[i][j] = parseInt(
+ prompt('Enter ' + i + 'th row and ' + j + 'th cols ')
+ );
+ }
+ }
+ for (let i = 0; i < Rows; i++) {
+ let max = Arr[0][i];
+ let min = Arr[i][0];
+ for (let j = 0; j < Cols; j++) {
+ if (max < Arr[j][i]) {
+ max = Arr[j][i];
+ }
+ if (min > Arr[i][j]) {
+ min = Arr[i][j];
+ }
+ }
+ document.write('Max for column ' + i + ' : ' + max);
+ document.write('Min for row ' + i + ' : ' + min);
+ }
+
+    </script>
+</body>
+</html>

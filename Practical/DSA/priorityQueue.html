@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Queue</title>
+</head>
+<body>
+    <script>
+        class PNODE {
+ constructor(val, p) {
+ this.data = val;
+ this.prt = p;
+ this.next = null;
+ }
+ }
+ class PriorityQueue {
+ constructor(size) {
+ this.front = null;
+ this.rare = null;
+ this.size = size;
+ this.cnt = 0;
+ }
+ insert(val, p) {
+ var newNode = new PNODE(val, p);
+ if (this.cnt == this.size) {
+ console.log("Queue is full\n");
+ return;
+ } else if (this.front == null) {
+ this.front = newNode;
+ this.rare = newNode;
+ this.cnt++;
+ return;
+ } else {
+ if (this.front.prt > newNode.prt) {
+ newNode.next = this.front;
+ this.front = newNode;
+ this.cnt++;
+ return;
+ }
+ if (this.front == this.rare) {
+ this.front.next = newNode;
+ this.rare = newNode;
+ this.cnt++;
+ return;
+ }
+ var temp = this.front;
+ while (temp.next != null && temp.next.prt <= newNode.prt) {
+ temp = temp.next;
+ }
+ newNode.next = temp.next;
+ temp.next = newNode;
+ this.cnt++;
+ }
+ }
+ Display() {
+ var temp = this.front;
+ var str = "";
+ while (temp != null) {
+ str = str + temp.data + " ";
+ temp = temp.next;
+ }
+ document.write(str + " ");
+ }
+ }
+ const obj = new PriorityQueue(10);
+ obj.insert(10, 4);
+ obj.insert(20, 2);
+ obj.insert(30, 2);
+ obj.insert(50, 1);
+ obj.insert(27, 5);
+    </script>
+</body>
+</html>

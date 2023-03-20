@@ -1,0 +1,96 @@
+<html>
+  <body>
+    <h1>Linear Queue using Linked List</h1>
+    <h1>Exercise11</h1>
+    <script>
+      class QNode {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+      class Queue {
+        constructor(size) {
+          this.front = null;
+          this.rear = null;
+          this.count = 0;
+          this.size = size;
+        }
+        isEmpty() {
+          if (this.front == null) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.count == this.size) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        Size() {
+          return this.count;
+        }
+        EnQueue(element) {
+          if (this.isFull()) {
+            document.write('Queue is full');
+            return;
+          }
+          var newNode = new QNode(element);
+          if (this.isEmpty()) {
+            this.front = newNode;
+            this.rear = newNode;
+          } else {
+            var temp = this.front;
+            while (temp.next != null) {
+              temp = temp.next;
+            }
+            temp.next = newNode;
+            this.rear = newNode;
+          }
+          this.count++;
+        }
+
+        DeQueue() {
+          if (this.isEmpty()) {
+            document.write('Queue is Empty');
+            return;
+          } else if (this.size == 1) {
+            document.write('');
+            var iNo = this.front.data;
+            this.front = null;
+            this.rear = null;
+          } else {
+            var iNo = this.front.data;
+            this.front = this.front.next;
+          }
+          this.count--;
+          return iNo;
+        }
+
+        Display() {
+          var temp = this.front;
+          var str = '';
+          while (temp != null) {
+            str = str + temp.data + '->';
+            temp = temp.next;
+          }
+          document.write(str);
+        }
+      }
+      const qobj = new Queue(5);
+      qobj.EnQueue(10);
+      qobj.EnQueue(20);
+      qobj.EnQueue(30);
+      qobj.EnQueue(40);
+
+      document.write('Deleted element from queue is ' + qobj.DeQueue());
+      document.write('<br>');
+      qobj.Display();
+      document.write('<br>');
+      document.write('Number of element  in queue are ' + qobj.Size());
+    </script>
+  </body>
+</html>

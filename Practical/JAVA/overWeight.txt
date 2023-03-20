@@ -1,0 +1,22 @@
+import java.util.*;
+class OverwtProductException extends Exception {
+OverwtProductException(String s) {
+super(s);
+}
+}
+class exceptionDemo {
+public static void main(String[] args) throws OverwtProductException { 
+ Scanner sc = new Scanner(System.in);
+ int n=sc.nextInt();
+ try {
+ if(n>60) {
+ throw new OverwtProductException("Weight Overload");
+ } else {
+ System.out.println("Exception not found");
+ }
+ }
+catch (Exception e) {
+System.out.println("Exception occur"+e);
+}
+}
+}

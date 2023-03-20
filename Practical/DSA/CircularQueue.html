@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircularQueue</title>
+</head>
+<body>
+    <script>
+        class Queue {
+ constructor(size) {
+ this.Arr = new Array();
+ this.front = -1;
+ this.rare = -1;
+ this.size = size;
+ }
+ isEmpty() {
+ if (this.front == -1) {
+ return 1;
+ } else {
+ return 0;
+ }
+ }
+ isFull() {
+ if (
+ (this.front == 0 && this.rare == this.size - 1) ||
+ this.rare + 1 == this.front
+ ) {
+ return 1;
+ } else {
+ return 0;
+ }
+ }
+ EnQueue(val) {
+ if (this.isFull()) {
+ document.write("Queue is full..");
+ return;
+ } else if (this.isEmpty()) {
+ this.front++;
+ this.rare++;
+ this.Arr[this.rare] = val;
+ } else {
+ this.rare = this.rare + (1 % this.size);
+ this.Arr[this.rare] = val;
+ }
+ }
+ DeQueue() {
+ if (this.isEmpty()) {
+ document.write("Queue is empty");
+ } else if (this.front == this.rare) {
+ var val = Arr[this.front];
+ this.front = -1;
+ this.rare = -1;
+ //return val;
+ } else {
+ var val = this.Arr[this.front];
+ this.front = (this.front + 1) % this.size;
+ //return val;
+ }
+ }
+ Display() {
+ var str = "";
+ for (var i = this.front; i != this.rare; i = i + (1 % this.size)) {
+ str = str + this.Arr[i] + " ";
+ }
+ str = str + this.Arr[i] + " ";
+ document.write(str);
+ }
+ }
+ const qobj = new Queue(7);
+ qobj.EnQueue(10);
+ qobj.EnQueue(20);
+ qobj.EnQueue(30);
+ qobj.EnQueue(40);
+ qobj.EnQueue(50);
+ qobj.DeQueue();
+ qobj.Display();
+    </script>
+</body>
+</html>

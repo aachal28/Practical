@@ -1,0 +1,26 @@
+interface Animals{
+public void sound();
+public default void walk() {
+System.out.println("Aniaml walk on 4 Legs");
+}
+}
+class Cat implements Animals {
+public void sound(){
+System.out.println("Cat sound is nice");
+}
+}
+class Dog implements Animals {
+public void sound() {
+System.out.println("Dog sound is horrible");
+}
+}
+class interfaceDemo{
+public static void main(String Arg[]) {
+Cat C=new Cat();
+C.sound();
+C.walk();
+Dog D=new Dog();
+D.sound();
+D.walk();
+}
+}

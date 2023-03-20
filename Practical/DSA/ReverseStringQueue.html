@@ -1,0 +1,140 @@
+<html>
+  <body>
+    <h1>Reverse Stack using Queue</h1>
+    <h1>Exercise11</h1>
+    <script>
+      class QNode {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+      class Queue {
+        constructor(size) {
+          this.front = null;
+          this.rear = null;
+          this.count = 0;
+          this.size = size;
+        }
+        isEmpty() {
+          if (this.front == null) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.count == this.size) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        Size() {
+          return this.count;
+        }
+        EnQueue(element) {
+          if (this.isFull()) {
+            document.write('Queue is full');
+            return;
+          }
+          var newNode = new QNode(element);
+          if (this.isEmpty()) {
+            this.front = newNode;
+            this.rear = newNode;
+          } else {
+            var temp = this.front;
+            while (temp.next != null) {
+              temp = temp.next;
+            }
+            temp.next = newNode;
+            this.rear = newNode;
+          }
+          this.count++;
+        }
+
+        DeQueue() {
+          if (this.isEmpty()) {
+            document.write('Queue is Empty');
+            return;
+          } else if (this.size == 1) {
+            document.write('');
+            var iNo = this.front.data;
+            this.front = null;
+            this.rear = null;
+          } else {
+            var iNo = this.front.data;
+            this.front = this.front.next;
+          }
+          this.count--;
+          return iNo;
+        }
+      }
+      class Stack {
+        constructor(size) {
+          this.Arr = new Array(size);
+          this.Top = -1;
+          this.size = size;
+        }
+        isEmpty() {
+          if (this.Top == -1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.Top == this.size - 1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        push(data) {
+          if (this.isFull()) {
+            document.write('Stack is full');
+          } else {
+            this.Top++;
+            this.Arr[this.Top] = data;
+          }
+        }
+        pop() {
+          if (this.isEmpty()) {
+            document.write('Stack is empty');
+          } else {
+            var iNo = this.Arr[this.Top];
+            this.Top--;
+          }
+          return iNo;
+        }
+        display() {
+          var str = '';
+          for (var i = 0; i <= this.Top; i++) {
+            str = str + this.Arr[i] + ' ';
+          }
+          document.write(str);
+        }
+      }
+      let sobj = new Stack(10);
+      let qobj = new Queue(10);
+      sobj.push(10);
+      sobj.push(20);
+      sobj.push(30);
+      sobj.push(40);
+      sobj.push(50);
+      document.write('Before Revrse');
+      sobj.display();
+      while (!sobj.isEmpty()) {
+        var iNo = sobj.pop();
+        qobj.EnQueue(iNo);
+      }
+      while (!qobj.isEmpty()) {
+        var iNo = qobj.DeQueue();
+        sobj.push(iNo);
+      }
+      document.write('<br>');
+      document.write('After Revrse');
+      sobj.display();
+    </script>
+  </body>
+</html>

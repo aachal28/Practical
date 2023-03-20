@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Honoi</title>
+</head>
+<body>
+    <script>
+        function towerOfHanoi(n, source, destination, auxiliary) {
+ if (n === 1) {
+ console.log(`Move disk 1 from ${source} to ${destination}`);
+ return;
+ }
+ towerOfHanoi(n - 1, source, auxiliary, destination);
+ console.log(`Move disk ${n} from ${source} to ${destination}`);
+ towerOfHanoi(n - 1, auxiliary, destination, source);
+ }
+ const numDisks = 4;
+ towerOfHanoi(numDisks, 'A', 'C', 'B');
+
+    </script>
+</body>
+</html>

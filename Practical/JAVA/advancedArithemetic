@@ -1,0 +1,24 @@
+import java.util.*;
+interface AdvancedArithmetic {
+int divisorSum(int n); 
+}
+class MyCalculator implements AdvancedArithmetic { 
+int sum=0;
+public int divisorSum(int n) { 
+for(int i=1; i<=n; i++) { 
+if(n%i==0) { 
+sum=sum+i; 
+}
+} 
+return sum; 
+}
+} 
+class advance { 
+public static void main(String[] args) {
+Scanner sc= new Scanner(System.in); 
+int n=sc.nextInt(); 
+AdvancedArithmetic m1=new MyCalculator(); 
+int sum= m1.divisorSum(n); 
+System.out.println("Answwer= "+sum); 
+}
+}
